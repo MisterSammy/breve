@@ -5,10 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Notes</div>
+                    <div class="card-header">New Note</div>
                     <div class="card-body">
-                        {{--@include('common.errors')--}}
-
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -38,6 +36,40 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">My Notes</div>
+                    <div class="card-body">
+                        @if ($notes->count())
+                            <table class="table">
+                                <thead>
+                                    <th>Title</th>
+                                    <th>Body</th>
+                                    <th>&nbsp;</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($notes as $note)
+                                        <tr>
+                                            <td>
+                                                {{ $note->title }}
+                                            </td>
+                                            <td>
+                                                {{ $note->body }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <blockquote class="blockquote">
+                                <p class="mb-0">I enjoy the freedom of the blank page.</p>
+                                <footer class="blockquote-footer">Irvine Welsh</footer>
+                            </blockquote>
+                            <hr>
+                            <p>You have no notes yet.</p>
+                            <hr>
+                        @endif
                     </div>
                 </div>
             </div>
