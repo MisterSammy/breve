@@ -16,9 +16,15 @@ class NoteController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('notes.index');
+        $notes = $request->user()->notes()
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('notes.index', [
+            'notes' => $notes
+        ]);
     }
 
     public function store(Request $request)
