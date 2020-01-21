@@ -18,15 +18,18 @@ class NoteController extends Controller
 
     public function index()
     {
-        return 'index';
+        return view('notes.index');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required|max:50000'
+        ]);
     }
 
-    public function destroy(Task $task)
+    public function destroy(Note $note)
     {
         //
     }

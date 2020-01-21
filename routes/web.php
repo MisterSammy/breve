@@ -21,12 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/notes', [
     'uses' => 'NoteController@index',
+    'as' => 'notes.index'
 ]);
 
 Route::post('/note', [
     'uses' => 'NoteController@store',
+    'as' => 'notes.store'
 ]);
 
 Route::delete('/note/{note}', [
     'uses' => 'NoteController@destroy',
+    'as' => 'notes.destroy'
 ]);
