@@ -24,7 +24,6 @@ class NoteController extends Controller
 
     public function index(Request $request)
     {
-
         return view('notes.index', [
             'notes' => $this->notes->forUser($request->user())
         ]);
@@ -45,8 +44,11 @@ class NoteController extends Controller
         return redirect()->route('notes.index');
     }
 
-    public function destroy(Note $note)
+    public function destroy(Request $request, Note $note)
     {
-        //
+        $this->authorize('destroy', $note);
+        $note->delete();
+
+        return redirect()->route('notes.index');
     }
 }

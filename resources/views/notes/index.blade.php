@@ -57,6 +57,13 @@
                                             <td>
                                                 {{ $note->body }}
                                             </td>
+                                            <td>
+                                                <form action="{{ route('notes.destroy', $note->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    {{ method_field('DELETE') }}
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
