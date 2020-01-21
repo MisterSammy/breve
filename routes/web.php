@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/notes', [
+    'uses' => 'NoteController@index',
+]);
+
+Route::post('/note', [
+    'uses' => 'NoteController@store',
+]);
+
+Route::delete('/note/{note}', [
+    'uses' => 'NoteController@destroy',
+]);
