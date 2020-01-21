@@ -3,27 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\NoteRepository;
+use App\Note;
 
 class NoteController extends Controller
 {
+
+    protected $notes;
+
     /**
-     * Create a new controller instance.
+     * Create a new NoteController instance.
      *
-     * @return void
+     * @param NoteRepository $notes
      */
-    public function __construct()
+    public function __construct(NoteRepository $notes)
     {
         $this->middleware('auth');
+        $this->notes = $notes;
     }
 
     public function index(Request $request)
     {
-        $notes = $request->user()->notes()
-            ->orderBy('created_at', 'desc')
-            ->get();
 
         return view('notes.index', [
-            'notes' => $notes
+            'notes' => $this->notes->forUser($request->user())
         ]);
     }
 
