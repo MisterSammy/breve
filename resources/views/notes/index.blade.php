@@ -38,6 +38,16 @@
                         </form>
                     </div>
                 </div>
+                <br />
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">I enjoy the freedom of the blank page.</p>
+                            <footer class="blockquote-footer">Irvine Welsh</footer>
+                        </blockquote>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
