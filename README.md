@@ -16,4 +16,6 @@ To run the demo application:
 - Run php artisan db:seed for demo users and content
 
 
+# ![](https://i.imgur.com/vVaU89x.png)
 
+# ![](https://i.imgur.com/HNIbLPV.png)
