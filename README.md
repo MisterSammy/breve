@@ -18,4 +18,4 @@ To run the demo application:
 
 # ![](https://i.imgur.com/vVaU89x.png)
 
-# ![](https://i.imgur.com/JxTcbPR.png)
+# ![](https://i.imgur.com/HNIbLPV.png)
