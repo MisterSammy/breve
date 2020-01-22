@@ -19,6 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/library', [
+    'uses' => 'LibraryController@index',
+    'as' => 'library.index'
+]);
+
 Route::get('/notes', [
     'uses' => 'NoteController@index',
     'as' => 'notes.index'
@@ -32,4 +37,9 @@ Route::post('/note', [
 Route::delete('/note/{note}', [
     'uses' => 'NoteController@destroy',
     'as' => 'notes.destroy'
+]);
+
+Route::get('/library', [
+    'uses' => 'LibraryController@index',
+    'as' => 'library.index'
 ]);
