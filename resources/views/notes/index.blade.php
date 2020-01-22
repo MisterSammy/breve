@@ -1,0 +1,85 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">New Note</div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <form action="{{ route('notes.store') }}" method="post" class="form-horizontal needs-validation">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" class="form-control
+                                    {{ $errors->has('title') ? 'is-danger' : '' }}" maxlength="255">
+                                    @if ($errors->has('title'))
+                                        <p class="help is-danger">{{ $errors->first('title') }}</p>
+                                    @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="body">Body</label>
+                                <textarea rows="10" name="body" id="body" class="form-control
+                                    {{ $errors->has('body') ? 'is-danger' : '' }}" maxlength="50000"></textarea>
+                                @if ($errors->has('body'))
+                                    <p class="help is-danger">{{ $errors->first('body') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-6">
+                                    <button type="submit" class="btn btn-success">Add Note</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">My Notes</div>
+                    <div class="card-body">
+                        @if ($notes->count())
+                            <table class="table">
+                                <thead>
+                                    <th>Title</th>
+                                    <th>Body</th>
+                                    <th>&nbsp;</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($notes as $note)
+                                        <tr>
+                                            <td>
+                                                {{ $note->title }}
+                                            </td>
+                                            <td>
+                                                {{ $note->body }}
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('notes.destroy', $note->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    {{ method_field('DELETE') }}
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <blockquote class="blockquote">
+                                <p class="mb-0">I enjoy the freedom of the blank page.</p>
+                                <footer class="blockquote-footer">Irvine Welsh</footer>
+                            </blockquote>
+                            <hr>
+                            <p>You have no notes yet.</p>
+                            <hr>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
