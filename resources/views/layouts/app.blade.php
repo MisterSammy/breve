@@ -26,6 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <img src="{{ asset('breve.png') }}" />&nbsp;
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Breve') }}
                 </a>
