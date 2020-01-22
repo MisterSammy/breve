@@ -40,6 +40,16 @@ class NoteController extends Controller
         return redirect()->route('notes.index');
     }
 
+    public function edit(Request $request, Note $note)
+    {
+        $note->update([
+            'title' => $request->get('title'),
+            'body' => $request->get('body')
+        ]);
+
+        return redirect()->route('library.index');
+    }
+
     public function destroy(Request $request, Note $note)
     {
         $this->authorize('destroy', $note);

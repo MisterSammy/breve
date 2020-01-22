@@ -34,6 +34,11 @@ Route::post('/note', [
     'as' => 'notes.store'
 ]);
 
+Route::post('/note/{note}/edit', [
+    'uses' => 'NoteController@edit',
+    'as' => 'notes.edit'
+]);
+
 Route::delete('/note/{note}', [
     'uses' => 'NoteController@destroy',
     'as' => 'notes.destroy'
