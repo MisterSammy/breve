@@ -18,11 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/609f42dbc1.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <img src="{{ asset('breve.png') }}" />&nbsp;
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Breve') }}
                 </a>
@@ -34,7 +38,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check())
-                            <li><a href="{{ route('notes.index') }}">Notes</a></li>
+                            <li><button type="button" class="btn btn-light"><a href="{{ route('notes.index') }}"><i class="fas fa-pencil-alt"></i> Note</a></button></li>&nbsp;
+                            <li><button type="button" class="btn btn-light"><a href="{{ route('library.index') }}"><i class="fas fa-book"></i> Library</a></button></li>
                         @endif
                     </ul>
 
