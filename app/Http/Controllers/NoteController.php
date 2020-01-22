@@ -45,6 +45,6 @@ class NoteController extends Controller
         $this->authorize('destroy', $note);
         $note->delete();
 
-        return redirect()->route('notes.index');
+        return redirect()->route('library.index');
     }
 }
